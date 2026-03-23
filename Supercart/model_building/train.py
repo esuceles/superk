@@ -99,24 +99,24 @@ y_pred_train = best_model.predict(Xtrain)
 y_pred_test = best_model.predict(Xtest)
 
 # Evaluation
-print("\nTraining Performance:")
-print("train_MAE:", mean_absolute_error(ytrain, y_pred_train))
-print("train_RMSE:", np.sqrt(mean_squared_error(ytrain, y_pred_train)))
-print("train_R²:", r2_score(ytrain, y_pred_train))
+# Metrics
+    train_rmse = mean_squared_error(ytrain, y_pred_train, squared=False)
+    test_rmse = mean_squared_error(ytest, y_pred_test, squared=False)
 
-print("\nTest Performance:")
-print("test_MAE:", mean_absolute_error(ytest, y_pred_test))
-print("test_RMSE:", np.sqrt(mean_squared_error(ytest, y_pred_test)))
-print("test_R²:", r2_score(ytest, y_pred_test))
+    train_mae = mean_absolute_error(ytrain, y_pred_train)
+    test_mae = mean_absolute_error(ytest, y_pred_test)
+
+    train_r2 = r2_score(ytrain, y_pred_train)
+    test_r2 = r2_score(ytest, y_pred_test)
 
 # Log metrics
 mlflow.log_metrics({
-  "train_RMSE": train_RMSE,
-  "test_RMSE": test_RMSE,
-  "train_MAE": train_MAE,
-  "test_MAE": test_MAE,
-  "train_R2": train_R2,
-  "test_R2": test_R2
+  "train_RMSE": train_rmse,
+  "test_RMSE": test_rmse,
+  "train_MAE": train_mae,
+  "test_MAE": test_mae,
+  "train_R2": train_r2,
+  "test_R2": test_r2
   })
 
  # Save the model locally
