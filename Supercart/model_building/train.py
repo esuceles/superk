@@ -111,12 +111,12 @@ print("test_R²:", r2_score(ytest, y_pred_test))
 
 # Log metrics
 mlflow.log_metrics({
-  "train_RMSE": train_rmse,
-  "test_RMSE": test_rmse,
-  "train_MAE": train_mae,
-  "test_MAE": test_mae,
-  "train_R2": train_r2,
-  "test_R2": test_r2
+  "train_RMSE": train_RMSE,
+  "test_RMSE": test_RMSE,
+  "train_MAE": train_MAE,
+  "test_MAE": test_MAE,
+  "train_R2": train_R2,
+  "test_R2": test_R2
   })
 
  # Save the model locally
